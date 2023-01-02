@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/p5.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+      <section>
+        <p><strong><span>danieluzquiano.xyz</span></strong><br><span>I am a graphic designer specialized in <em>typography</em> and <em>interaction</em>.</span></br> 
+        <span>Hooked on generative art and creative coding with p5.js.</span></p>
+        <p><a href="https://twitter.com/danieluzquiano" aria-label="twitter" target="_blank" rel="noopener"><img class="twitter" src="../img/twitter.svg"></p></a>
+      </section>
+    <details>
+        <summary>Tail (code)</summary>
+      <div>
+        <pre class="prettyprint">
+          let zoff = 0;
+
+          function setup() {
+            createCanvas(windowWidth, windowHeight);
+            background(0);
+            frameRate(20);
+          }
+
+          function draw() {
+            background(0);
+            translate(width * 0.43, height * 0.5);
+            scale(200);
+            noStroke();
+            for (let a = 0; a < 1.15; a += 0.01112) {
+              let e = cos(a) + zoff;
+              fill(100 * a * 2, 5 * a, 250 * a * 2);
+              circle(noise(e), cos(sin(e) * 2), 1.971 / a / 5);
+            }
+
+            if (
+              mouseX < width * 0.75 &&
+              mouseX > width * 0.35 &&
+              mouseY < height * 0.75 &&
+              mouseY > height * 0.35
+            ) {
+              zoff += 0.08;
+            } else {
+              zoff += 0.03;
+            }
+          }
+
+          function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+          }
+        </pre>
+      </div>
+    </details>
+    <nav>
+      <a href="../circles/index.html">←</a>
+      <a href="../allien_shell/index.html">→</a>
+    </nav>
+    <script>
+
+    </script>
+  </body>
+</html>

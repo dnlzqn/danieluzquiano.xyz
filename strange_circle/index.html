@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Strange Circle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/p5.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+      <section>
+        <p><strong><span>danieluzquiano.xyz</span></strong><br><span>I am a graphic designer specialized in <em>typography</em> and <em>interaction</em>.</span></br> 
+        <span>Hooked on generative art and creative coding with p5.js.</span></p>
+        <p><a href="https://twitter.com/danieluzquiano" aria-label="twitter" target="_blank" rel="noopener"><img class="twitter" src="../img/twitter.svg"></p></a>
+      </section>
+    <details>
+        <summary>Strange Circle (code)</summary>
+      <div>
+        <pre class="prettyprint">
+          let zoff = 0;
+          let x, y, e, xx, yy;
+
+          function setup() {
+            createCanvas(windowWidth, windowHeight);
+            background(0);
+            frameRate(20);
+          }
+
+          function draw() {
+            background(0);
+            translate(width / 2, height / 2);
+            noFill();
+            stroke(255);
+            for (let a = 0; a < 7; a += 0.0012) {
+              x = 20 * cos(a);
+              y = 20 * sin(a);
+              e = sin(x) / sin(y) + zoff;
+              xx = noise(cos(e * 2)) * y * 15;
+              yy = noise(sin(e * 2)) * x * 15;
+              point(xx/cos(e), yy/cos(e));
+            }
+            zoff += map(mouseX,0,width,-0.03,+0.03);
+          }
+
+          function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+          }
+        </pre>
+      </div>
+    </details>
+    <nav>
+      <a href="../rolling_landscapes/index.html">←</a>
+      <a id="refresh" href="../strange_circle/index.html">Refresh</a>
+      <a href="../tail/index.html">→</a>
+    </nav>
+    <script>
+
+    </script>
+  </body>
+</html>

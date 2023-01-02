@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Black holes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/p5.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+      <section>
+        <p><strong><span>danieluzquiano.xyz</span></strong><br><span>I am a graphic designer specialized in <em>typography</em> and <em>interaction</em>.</span></br> 
+        <span>Hooked on generative art and creative coding with p5.js.</span></p>
+        <p><a href="https://twitter.com/danieluzquiano" aria-label="twitter" target="_blank" rel="noopener"><img class="twitter" src="../img/twitter.svg"></p></a>
+      </section>
+    <details>
+        <summary>Black holes (code)</summary>
+      <div>
+        <pre class="prettyprint">
+          let zoff = 0;
+          let noiseMax = 0;
+          let r, x, y, e, xx, yy;
+
+          function setup() {
+            createCanvas(windowWidth, windowHeight);
+            background(0);
+            noiseSeed(fxrand()*999999)
+            translate(width / 2, height / 2);
+            noFill();
+            stroke(255);
+            for (let a = 0; a < 7; a += 0.00012) {
+              x = 20 * cos(a);
+              y = 20 * sin(a);
+              e = sin(x) / sin(y) + zoff;
+              xx = noise(cos(e * 2)) * y * 20;
+              yy = noise(sin(e * 2)) * x * 20;
+              point(xx / 1.25, yy / 1.25);
+              point(xx / cos(e), yy / cos(e));
+            }
+          }
+        </pre>
+      </div>
+    </details>
+    <nav>
+      <a href="../allien_shell/index.html">←</a>
+      <a id="refresh" href="../black_holes/index.html">Refresh</a>
+      <a href="../choreography_6/index.html">→</a>
+    </nav>
+    <script>
+
+    </script>
+  </body>
+</html>
